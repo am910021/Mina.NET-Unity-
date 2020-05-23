@@ -111,21 +111,21 @@ namespace YuriWorkSpace
         }
 
 
-        public void DelegateHandler(ClientObject client, PacketInStream packet)
+        public void DelegateHandler(PacketInStream packet)
         {
             lock (objectLock)
             {
                 short head = packet.readShort();
                 AbstractClientPacketHandle handler = GetHandler(head);
 
-                if (!handler.IsActive(client))
+                if (!handler.IsActive())
                     return;
 
                 if (handler.IsNeedDebug())
                 {
                     packet.printHex("Client");
                 }
-                handler.DelegatePacket(new InPackageObject(client, packet));
+                handler.DelegatePacket(packet);
             }
         }
 

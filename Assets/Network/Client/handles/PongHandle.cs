@@ -16,7 +16,7 @@ public class PongHandle : AbstractClientPacketHandle
         return PacketOpcode.SERVER.PONG;
     }
 
-    protected override void handlePacket(ClientObject client, PacketInStream packet)
+    protected override void handlePacket( PacketInStream packet)
     {
         long oldTicks = packet.readLong();
         DateTime dt = DateTime.UtcNow;

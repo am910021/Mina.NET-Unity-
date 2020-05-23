@@ -15,7 +15,7 @@ namespace YuriWorkSpace
             return PacketOpcode.SERVER.RESPONSE_CUBE;
         }
 
-        protected override void handlePacket(ClientObject client, PacketInStream packet)
+        protected override void handlePacket( PacketInStream packet)
         {
             Vector3 pos = new Vector3(packet.readFloat(), packet.readFloat(), packet.readFloat());
             Vector3 rot = new Vector3(packet.readFloat(), packet.readFloat(), packet.readFloat());

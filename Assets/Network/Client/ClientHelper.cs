@@ -192,7 +192,7 @@ namespace YuriWorkSpace
             PacketDecoderNew decoder = new PacketDecoderNew(data);
             if (!decoder.Available())
                 return;
-            ServerPacketProcessor.Instance.DelegateHandler(client, decoder.GetPacket());
+            ClientPacketProcessor.Instance.DelegateHandler( decoder.GetPacket());
             decoder.Dispose();
         }
     }

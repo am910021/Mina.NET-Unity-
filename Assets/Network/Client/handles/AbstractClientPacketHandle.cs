@@ -14,7 +14,7 @@ namespace YuriWorkSpace
         [SerializeField]
         private bool isDebug = false;
 
-        public void DelegatePacket(InPackageObject packet)
+        public void DelegatePacket(PacketInStream packet)
         {
             _stack.Enqueue(packet);
         }
@@ -22,17 +22,15 @@ namespace YuriWorkSpace
         {
             if (_stack.Count > 0)
             {
-                InPackageObject package = (InPackageObject)_stack.Dequeue();
-                this.handlePacket(package.client, package.packet);
-                package = null;
+                this.handlePacket((PacketInStream)_stack.Dequeue());
             }
         }
 
         public abstract PacketOpcode.SERVER getOpcode();
 
-        protected abstract void handlePacket(ClientObject client, PacketInStream packet);
+        protected abstract void handlePacket(PacketInStream packet);
 
-        public virtual bool IsActive(ClientObject client)
+        public virtual bool IsActive()
         {
             return true;
         }
