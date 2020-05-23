@@ -1,0 +1,8 @@
+<linker>
+	<assembly fullname="System.Core">
+		<type fullname="System.Linq.Expressions.Interpreter.LightLambda" preserve="all" />
+	</assembly>
+	<assembly fullname="Common.Logging" preserve="all" />
+	<assembly fullname="Microsoft.CSharp" preserve="all" />
+	<assembly fullname="System.Reflection.TypeExtensions" preserve="all" />
+</linker>
