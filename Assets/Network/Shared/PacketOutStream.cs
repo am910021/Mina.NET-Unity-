@@ -7,10 +7,13 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using UnityEngine;
 
-namespace YuriWorkSpace
+namespace YuriWorkSpace 
 {
-    public class PacketOutStream
+    public class PacketOutStream : IDisposable
     {
+        private bool _disposed = false;
+        ~PacketOutStream() => Dispose(false);
+
         private MemoryStream stream;
         private BinaryWriter outPacket;
         byte[] outData = null;
@@ -127,6 +130,30 @@ namespace YuriWorkSpace
                 str += String.Format("{0:x} ", b);
             }
             return str;
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        // Protected implementation of Dispose pattern.
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                // TODO: dispose managed state (managed objects).
+            }
+
+            // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+            // TODO: set large fields to null.
+
+            _disposed = true;
         }
 
 

@@ -10,6 +10,7 @@ namespace YuriWorkSpace
 {
     public sealed class ClientPacketProcessor : MonoBehaviour
     {
+        #pragma warning disable 0219
         [SerializeField]
         private AbstractClientPacketHandle[] handlers;
 
@@ -146,6 +147,12 @@ namespace YuriWorkSpace
 
         public void RegisterHandler(PacketOpcode.SERVER code, AbstractClientPacketHandle handler)
         {
+            if(registered[(short)code] != null)
+            {
+                Debug.Log("handler alread in list.");
+                return;
+            }
+
             try
             {
                 registered[(short)code] = handler;
@@ -157,7 +164,17 @@ namespace YuriWorkSpace
             }
         }
 
-        public void reset()
+        public void DeRegisterHandler(PacketOpcode.SERVER code)
+        {
+            if (registered[(short)code] == null)
+            {
+                Debug.Log("handler code not in list.");
+                return;
+            }
+            registered[(short)code] = null;
+        }
+
+        public void Reset()
         {
             registered = new AbstractClientPacketHandle[registered.Length];
             RegisterHandler(PacketOpcode.SERVER.PONG, pongHandler);

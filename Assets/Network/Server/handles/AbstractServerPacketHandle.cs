@@ -22,14 +22,14 @@ namespace YuriWorkSpace
             if (_stack.Count > 0)
             {
                 InPackageObject package = (InPackageObject)_stack.Dequeue();
-                this.handlePacket(package.client, package.packet);
-                package = null;
+                this.HandlePacket(package.client, package.packet);
+                package.packet.Dispose();
             }
         }
 
         public abstract PacketOpcode.CLIENT getOpcode();
 
-        protected abstract void handlePacket(ClientObject client, PacketInStream packet);
+        protected abstract void HandlePacket(ClientObject client, PacketInStream packet);
 
         public virtual bool IsActive(ClientObject client)
         {

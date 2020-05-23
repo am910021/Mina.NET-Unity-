@@ -22,13 +22,15 @@ namespace YuriWorkSpace
         {
             if (_stack.Count > 0)
             {
-                this.handlePacket((PacketInStream)_stack.Dequeue());
+                PacketInStream packet = (PacketInStream)_stack.Dequeue();
+                this.HandlePacket(packet);
+                packet.Dispose();
             }
         }
 
         public abstract PacketOpcode.SERVER getOpcode();
 
-        protected abstract void handlePacket(PacketInStream packet);
+        protected abstract void HandlePacket(PacketInStream packet);
 
         public virtual bool IsActive()
         {

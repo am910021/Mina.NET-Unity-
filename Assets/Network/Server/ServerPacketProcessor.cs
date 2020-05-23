@@ -159,7 +159,17 @@ namespace YuriWorkSpace
             }
         }
 
-        public void reset()
+        public void DeRegisterHandler(PacketOpcode.CLIENT code)
+        {
+            if (registered[(short)code] == null)
+            {
+                Debug.Log("handler code not in list.");
+                return;
+            }
+            registered[(short)code] = null;
+        }
+
+        public void Reset()
         {
             registered = new AbstractServerPacketHandle[registered.Length];
             RegisterHandler(PacketOpcode.CLIENT.PING, pingHandle);

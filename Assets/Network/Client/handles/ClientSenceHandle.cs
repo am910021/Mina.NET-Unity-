@@ -14,7 +14,7 @@ namespace YuriWorkSpace
             return PacketOpcode.SERVER.RESPONSE_SCENE;
         }
 
-        protected override void handlePacket(PacketInStream packet)
+        protected override void HandlePacket(PacketInStream packet)
         {
             string sence = packet.readString();
             SceneManager.LoadSceneAsync(sence);

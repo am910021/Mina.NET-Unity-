@@ -107,6 +107,7 @@ namespace YuriWorkSpace
                 return;
             }
             this.session.Write(packet.getPackets()); ;
+            packet.Dispose();
         }
 
         void Run()
@@ -183,7 +184,6 @@ namespace YuriWorkSpace
 
         private void MessageSent(object sender, IoSessionMessageEventArgs e)
         {
-            Debug.Log("client MessageSent");
         }
 
         private void MessageReceived(object sender, IoSessionMessageEventArgs e)

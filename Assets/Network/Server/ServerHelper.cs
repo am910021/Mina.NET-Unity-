@@ -28,6 +28,7 @@ namespace YuriWorkSpace
         IPEndPoint endPoint;
         IPAddress address;
         int port;
+        int maxConnect = 10;
 
         List<ClientObject> clients;
 
@@ -113,13 +114,21 @@ namespace YuriWorkSpace
             acceptor.ExceptionCaught += ExceptionCaught;
             acceptor.Bind(endPoint);
             isStarted = true;
+
+            Debug.Log(String.Format("Server listen on {0} {1}", endPoint.Address, endPoint.Port));
         }
 
         private void SessionOpened(object sender, IoSessionEventArgs e)
         {
             IPEndPoint remoreIP = (IPEndPoint)e.Session.RemoteEndPoint;
+            if (clients.Count >= maxConnect)
+            {
+                Debug.Log(String.Format("Reject client connecte from {0} {1}, reason Reason: connection to reach the upper limit.", remoreIP.Address, remoreIP.Port));
+                e.Session.Write(System.Text.Encoding.UTF8.GetBytes("Reject connect, Reason: connection to reach the upper limit."));
+                e.Session.CloseNow();
+                return;
+            }
             Debug.Log(String.Format("client connected  from {0} {1}", remoreIP.Address, remoreIP.Port));
-
             ClientObject client = new ClientObject(e.Session);
             e.Session.SetAttribute(SERVER_KEY, client);
             
@@ -134,6 +143,7 @@ namespace YuriWorkSpace
             ClientObject client = (ClientObject)e.Session.GetAttribute(SERVER_KEY);
             clients.Remove(client);
             e.Session.RemoveAttribute(SERVER_KEY);
+            client.Dispose();
         }
 
         private void SessionIdle(object sender, IoSessionIdleEventArgs e)
@@ -152,7 +162,6 @@ namespace YuriWorkSpace
 
         private void MessageSent(object sender, IoSessionMessageEventArgs e)
         {
-            Debug.Log("server MessageSent");
 
         }
 
@@ -171,6 +180,7 @@ namespace YuriWorkSpace
         public void Broadcast(PacketOutStream packet)
         {
             acceptor.Broadcast(packet.getPackets()); ;
+            packet.Dispose();
         }
 
         private void CloseAllClient()
@@ -180,6 +190,7 @@ namespace YuriWorkSpace
                 ClientObject client = (ClientObject)session.GetAttribute(SERVER_KEY);
                 session.CloseNow();
                 clients.Remove(client);
+                client.Dispose();
             }
         }
     }

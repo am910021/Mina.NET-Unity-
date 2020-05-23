@@ -13,7 +13,7 @@ public class SenceHandle : AbstractServerPacketHandle
         return PacketOpcode.CLIENT.REQUEST_SCENE;
     }
 
-    protected override void handlePacket(ClientObject client, PacketInStream packet)
+    protected override void HandlePacket(ClientObject client, PacketInStream packet)
     {
         client.Announce(ServerCreatePacket.response_scene(SceneManager.GetActiveScene().name));
     }

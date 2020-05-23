@@ -16,7 +16,7 @@ namespace YuriWorkSpace
             return PacketOpcode.CLIENT.PING;
         }
 
-        protected override void handlePacket(ClientObject client, PacketInStream packet)
+        protected override void HandlePacket(ClientObject client, PacketInStream packet)
         {
             long ticks = packet.readLong();
             client.Announce(ServerCreatePacket.ping(ticks));

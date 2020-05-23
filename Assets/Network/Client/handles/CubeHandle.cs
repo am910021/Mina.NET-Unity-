@@ -15,7 +15,7 @@ namespace YuriWorkSpace
             return PacketOpcode.SERVER.RESPONSE_CUBE;
         }
 
-        protected override void handlePacket( PacketInStream packet)
+        protected override void HandlePacket( PacketInStream packet)
         {
             Vector3 pos = new Vector3(packet.readFloat(), packet.readFloat(), packet.readFloat());
             Vector3 rot = new Vector3(packet.readFloat(), packet.readFloat(), packet.readFloat());
@@ -23,10 +23,6 @@ namespace YuriWorkSpace
             obj.transform.position = pos;
             obj.transform.eulerAngles = rot;
             obj.transform.localScale = scl;
-        }
-        public override bool IsNeedDebug()
-        {
-            return true;
         }
     }
 }

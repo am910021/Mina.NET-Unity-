@@ -326,6 +326,18 @@
     <Reference Include="UnityEngine.XRModule">
       <HintPath>Z:/Program Files/Unity/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>Z:/Unity/Project2/Mina.NET/Assets/Network/Plugins/Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>Z:/Unity/Project2/Mina.NET/Assets/Network/Plugins/Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Mina.NET">
+      <HintPath>Z:/Unity/Project2/Mina.NET/Assets/Network/Plugins/Mina.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions">
+      <HintPath>Z:/Unity/Project2/Mina.NET/Assets/Network/Plugins/System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>Z:/Unity/Project2/Mina.NET/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
@@ -334,18 +346,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>Z:/Unity/Project2/Mina.NET/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.Logging.Core">
-      <HintPath>Z:/Unity/Project2/Mina.NET/Assets/Network/Plugins/Common.Logging.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Mina.NET">
-      <HintPath>Z:/Unity/Project2/Mina.NET/Assets/Network/Plugins/Mina.NET.dll</HintPath>
-    </Reference>
-    <Reference Include="Common.Logging">
-      <HintPath>Z:/Unity/Project2/Mina.NET/Assets/Network/Plugins/Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reflection.TypeExtensions">
-      <HintPath>Z:/Unity/Project2/Mina.NET/Assets/Network/Plugins/System.Reflection.TypeExtensions.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>Z:/Program Files/Unity/2019.2.5f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
