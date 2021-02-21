@@ -70,6 +70,11 @@ namespace YuriWorkSpace
             this.port = port;
         }
 
+        public void SetMaxConnect(int max)
+        {
+            this.maxConnect = max;
+        }
+
 
         public void Start()
         {
